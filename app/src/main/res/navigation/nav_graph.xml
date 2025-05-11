@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/categoryListFragment">
+
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.example.mycity.ui.CategoryListFragment"
+        android:label="Категории"/>
+    <fragment
+        android:id="@+id/recommendationListFragment"
+        android:name="com.example.mycity.ui.RecommendationListFragment"
+        android:label="Рекомендации">
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/recommendationDetailFragment"
+        android:name="com.example.mycity.ui.RecommendationDetailFragment"
+        android:label="Детали">
+        <argument android:name="name" app:argType="string" />
+        <argument android:name="description" app:argType="string" />
+        <argument android:name="imageResId" app:argType="reference" />
+    </fragment>
+    <action
+        android:id="@+id/action_recommendation_to_detail"
+        app:destination="@id/recommendationDetailFragment" />
+    <!-- Переход из списка категорий в список рекомендаций -->
+    <action
+        android:id="@+id/action_category_to_recommendation"
+        app:destination="@id/recommendationListFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+</navigation>
